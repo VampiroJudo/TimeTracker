@@ -6,4 +6,11 @@ class SiteController < ApplicationController
 	def contact
 		render 'contact'
 	end
+
+	def projects
+		render 'projects'
+
+	end
+
+
 end
