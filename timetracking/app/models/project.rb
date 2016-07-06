@@ -1,2 +1,2 @@
-class Project < ApplicationRecord
+ class Project < ApplicationRecord
 end
