@@ -17,4 +17,17 @@ projectH = Project.create(name: "Recoverable.Inc", description: "UFO Retrieval S
 projectI = Project.create(name: "MK Ultra", description: "Information Restricted")
 projectJ = Project.create(name: "Singularity", description: "Sub-Branch of NASA")
 
+
+TimeEntry.create(project_id: projectB.id, hours: "2", minutes: "30")
+TimeEntry.create(project_id: projectC.id, hours: "4", minutes: "15")
+TimeEntry.create(project_id: projectD.id, hours: "1", minutes: "10")
+TimeEntry.create(project_id: projectE.id, hours: "3", minutes: "40")
+TimeEntry.create(project_id: projectF.id, hours: "5", minutes: "15")
+TimeEntry.create(project_id: projectG.id, hours: "0", minutes: "25")
+TimeEntry.create(project_id: projectH.id, hours: "6", minutes: "50")
+TimeEntry.create(project_id: projectI.id, hours: "3", minutes: "25")
+TimeEntry.create(project_id: projectJ.id, hours: "2", minutes: "45")
+
+
+
 puts "done"
