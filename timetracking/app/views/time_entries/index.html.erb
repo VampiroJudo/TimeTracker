@@ -5,16 +5,20 @@
 		<%= entry.hours %> h
 		<%= entry.minutes%> m -
 		<%= entry.date %>
+
 		<p> <%= entry.comment %></p>
 	
 		<a href="/projects/<%= @my_project.id %>/time_entries/<%= entry.id%>/edit">
 		edit
 		</a>
+
+		<%= link_to('Delete',project_time_entry_path(@my_project,entry), method:
+		'delete', data: {confirm: 'Are you sure?'})%>
+
 	</li>
 
 	<% end -%>
 
 </ul>
 
-<a href="
-">Add time entry to  <%= @my_project.name %></a>
+<a href="/projects/<%= @my_project.id %>/time_entries/new">Add time entry to  <%= @my_project.name %></a>
