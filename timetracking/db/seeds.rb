@@ -28,6 +28,7 @@ TimeEntry.create(project_id: projectH.id, hours: 6, minutes: 50)
 TimeEntry.create(project_id: projectI.id, hours: 3, minutes: 25)
 TimeEntry.create(project_id: projectJ.id, hours: 2, minutes: 45)
 
+# projectJ.time_entries.create(hours: 2, minutes: 45)
 
 
 puts "done"

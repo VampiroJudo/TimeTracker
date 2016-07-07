@@ -1,5 +1,10 @@
 class TimeEntry < ApplicationRecord
 	belongs_to :project
+	validates :hours, numericality: true
+	validates :dates, presence: true, uniqueness: true
+	validates :hours, presence: true, uniqueness: true
+	validates :minutes, presence: true, uniqueness: true
+	validates_associated :project
 end
 
 
