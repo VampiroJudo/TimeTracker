@@ -1,7 +1,7 @@
 class TimeEntriesController < ApplicationController
 	def index
 		@my_project = Project.find(params[:project_id])
-		@my_entries = @my_project.time_entries.find_by(id: params[:id])
+		@my_entries = @my_project.time_entries
 
 		render "index"
 	end
@@ -18,11 +18,7 @@ class TimeEntriesController < ApplicationController
 		
 		@my_project = Project.find(params[:project_id])
 		
-		@my_entry = @my_project.time_entries.new(
-			:hours => params[:time_entry][:hours],
-			:minutes => params[:time_entry][:minutes],
-			:date => params[:time_entry][:date],
-			:comment => params[:time_entry][:comment])
+		@my_entry = @my_project.time_entries.new(entry_params)
 
 			if @my_entry.save
 				redirect_to"/projects/#{@my_project.id}/time_entries"
@@ -33,7 +29,7 @@ class TimeEntriesController < ApplicationController
 	
 	def edit
 		@my_project = Project.find params[:project_id]
-		@my_entry = @my_project.time_entries.find params[:id]
+		@my_entry = TimeEntry.find params[:id]
 
 		render "edit"	
 		
@@ -43,14 +39,25 @@ class TimeEntriesController < ApplicationController
 		@my_project = Project.find_by(id: params[:project_id])
 		@my_entry = @my_project.time_entries.find_by(id: params[:id])
 
-		if @my_entry.update(hours: params[:time_entry][:hours],
-					minutes: params[:time_entry][:minutes],
-					date: params[:time_entry][:date],
-					comment: params[:time_entry][:date])
+		if @my_entry.update(entry_params)
 			redirect_to action: "index",controller: 'time_entries',
 		project_id:@my_project.id
 	else
 		render 'edit'
 	end
 end
+
+#add any new methods ABOVE	 the "private"
+
+	private
+
+	def entry_params
+
+		# {hours: params[:time_entry][:hours],
+		#  minutes: params[:time_entry][:minutes],
+		#  date: params[:time_entry][:date],
+		#  comment: params[:time_entry][:date]}
+
+		params.require(:time_entry).permit(:hours, :minutes, :date, :comment)
+	end
 end
