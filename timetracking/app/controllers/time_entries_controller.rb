@@ -21,12 +21,17 @@ class TimeEntriesController < ApplicationController
 		@my_entry = @my_project.time_entries.new(entry_params)
 
 			if @my_entry.save
-				redirect_to"/projects/#{@my_project.id}/time_entries"
+				flash[:notice] = "Project created successfully" 
+				redirect_to project_time_entries_path
 			else 
-				render "new"
+				redirect_to new_project_time_entry_path
 			end
 		end	
 	
+
+
+
+
 	def edit
 		@my_project = Project.find params[:project_id]
 		@my_entry = TimeEntry.find params[:id]
@@ -55,6 +60,11 @@ end
 
 		redirect_to project_time_entries_path(@my_project)
 	end
+
+
+
+
+
 
 #add any new methods ABOVE	 the "private"
 

@@ -31,4 +31,11 @@ TimeEntry.create(project_id: projectJ.id, hours: 2, minutes: 45)
 # projectJ.time_entries.create(hours: 2, minutes: 45)
 
 
+[*1..100].each do | num |
+    p = Project.new(name: "Project number #{num}", description: "Description for project number #{num}")
+    p.save
+    p.entries.create(hours: num, minutes: (rand * 11).floor, date: Date.current + num.hours)
+end
+
+
 puts "done"
